@@ -1,0 +1,40 @@
+# yaml (yet another markup language)
+# docker compose up --build
+services:
+
+  web:
+    build: ./web
+    ports: 
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: cool_app
+      
+  db:
+    build: ./db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cool_app
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    
+  migrations:
+    build: ./migrations
+    platform: linux/amd64
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: cool_app
+    depends_on:
+      - db
+    
+volumes:
+  db_data:

@@ -1,0 +1,31 @@
+package main
+
+import "log"
+
+// structures and methods
+
+type Person struct {
+	Name  string
+	Email string
+	Age   int
+}
+
+func (p Person) PrintInfo() {
+	log.Printf("Name: %s, Email: %s, Age: %d", p.Name, p.Email, p.Age)
+}
+
+func main() {
+	//var p Person
+	//p.Name = "John Doe"
+	//p.Email = "john@example.com"
+	//p.Age = 25
+
+	p := Person{
+		Name:  "John Doe",
+		Email: "john@example.com",
+		Age:   25,
+	}
+
+	p.PrintInfoZZ()
+
+}

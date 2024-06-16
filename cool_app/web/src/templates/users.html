@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cool app</title>
+    </head>
+    <body>
+        <ul>
+            {{range .users}}
+                <li>
+                    <p><b>Username: </b>{{.Username}}</p>
+                    <p><b>Email: </b>{{.Email}}</p>
+                </li>
+            {{end}}
+        </ul>
+    </body>
+</html>
